@@ -460,7 +460,7 @@ code {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: auto;
+  margin-top: 8px;
   padding-top: 8px;
   color: var(--signal-on-dark);
   font-family: var(--mono);
@@ -469,14 +469,6 @@ code {
 
 [data-view="group"] .terminal-body {
   justify-content: center;
-}
-
-[data-view="group"] .terminal-prompt {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 12px;
-  margin-top: 0;
 }
 
 .cursor {
