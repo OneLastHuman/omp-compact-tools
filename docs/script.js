@@ -3,6 +3,7 @@ const modeButtons = Array.from(document.querySelectorAll(".mode-switch [data-mod
 const modeLabel = document.querySelector("[data-mode-label]");
 const modeStatus = document.querySelector("[data-mode-status]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const zh = document.documentElement.lang.toLowerCase().startsWith("zh");
 
 function setMode(mode, announce = true) {
   if (!terminal) return;
@@ -11,7 +12,7 @@ function setMode(mode, announce = true) {
   for (const button of modeButtons) {
     button.setAttribute("aria-pressed", String(button.dataset.mode === mode));
   }
-  if (announce && modeStatus) modeStatus.textContent = `${mode} mode`;
+  if (announce && modeStatus) modeStatus.textContent = zh ? `已切换到 ${mode} 模式` : `${mode} mode`;
 }
 
 for (const button of modeButtons) {
@@ -32,14 +33,14 @@ for (const button of document.querySelectorAll("[data-copy]")) {
     const status = document.querySelector("[data-copy-status]");
     try {
       await navigator.clipboard.writeText(command);
-      button.textContent = "Copied";
-      if (status) status.textContent = "Command copied.";
+      button.textContent = zh ? "已复制" : "Copied";
+      if (status) status.textContent = zh ? "命令已复制。" : "Command copied.";
     } catch {
-      button.textContent = "Select";
-      if (status) status.textContent = "Copy failed. Select the command manually.";
+      button.textContent = zh ? "手动复制" : "Select";
+      if (status) status.textContent = zh ? "复制失败，请手动选择命令。" : "Copy failed. Select the command manually.";
     }
     window.setTimeout(() => {
-      button.textContent = "Copy";
+      button.textContent = zh ? "复制" : "Copy";
     }, 1600);
   });
 }

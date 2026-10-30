@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>omp-compact-tools — 八次调用，一行显示</title>
+  <meta name="description" content="一个 omp 显示插件：把工具调用压成一行，或把连续调用合并成一条摘要。">
+  <meta property="og:title" content="omp-compact-tools — 八次调用，一行显示">
+  <meta property="og:description" content="一个 omp 显示插件：把工具调用压成一行，或把连续调用合并成一条摘要。">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#eef0ea">
+  <meta property="og:url" content="https://onelasthuman.github.io/omp-compact-tools/zh/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en">
+  <link rel="canonical" href="https://onelasthuman.github.io/omp-compact-tools/zh/">
+  <link rel="alternate" hreflang="en" href="https://onelasthuman.github.io/omp-compact-tools/">
+  <link rel="alternate" hreflang="zh-CN" href="https://onelasthuman.github.io/omp-compact-tools/zh/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="omp-compact-tools 首页">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3.5 3.5h12l5 5v12h-17z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M15.5 3.5v5h5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M7.5 12.5h8M7.5 16h5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span>omp-compact-tools</span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="#modes">模式</a>
+      <a href="#install">安装</a>
+      <a href="https://github.com/OneLastHuman/omp-compact-tools">GitHub</a>
+      <a href="../" hreflang="en" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <h1>八次调用。<span>一行。</span></h1>
+        <div class="fold-rule" aria-hidden="true"></div>
+        <p class="lede">一个 omp 显示插件。每次调用压成一行；<br>连续调用合并成一条摘要。</p>
+        <p class="note">只改显示。工具调用、结果和模型看到的内容都不变。</p>
+        <div class="command" data-command="omp plugin install github:OneLastHuman/omp-compact-tools">
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>omp plugin install github:OneLastHuman/omp-compact-tools</code>
+          <button class="copy" type="button" data-copy>复制</button>
+        </div>
+      </div>
+
+      <div class="hero-demo">
+        <div class="demo-top">
+          <div class="mode-switch" role="group" aria-label="显示模式">
+            <button type="button" data-mode="default" aria-pressed="true" aria-controls="demo">default</button>
+            <button type="button" data-mode="line" aria-pressed="false" aria-controls="demo">line</button>
+            <button type="button" data-mode="group" aria-pressed="false" aria-controls="demo">group</button>
+          </div>
+        </div>
+
+        <div class="terminal" id="demo" data-view="default" aria-describedby="demo-desc">
+          <div class="terminal-bar">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="terminal-path">omp ~/project</span>
+            <span class="terminal-mode" data-mode-label>default</span>
+          </div>
+
+          <div class="terminal-body">
+            <div class="calls">
+              <div class="calls-inner">
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">❯</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Bash</span><span class="target">ls -la</span></span>
+                    <span class="call-output">src  package.json  README.md</span>
+                  </span>
+                  <span class="call-detail">8 entries</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">●</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Read</span><span class="target">src/index.ts</span></span>
+                    <span class="call-output">export function registerTool</span>
+                  </span>
+                  <span class="call-detail">124 lines</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">⌕</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Grep</span><span class="target">registerTool</span></span>
+                    <span class="call-output">3 matches · 2 files</span>
+                  </span>
+                  <span class="call-detail">3 matches</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">●</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Read</span><span class="target">src/plugin.ts</span></span>
+                    <span class="call-output">export const plugin =</span>
+                  </span>
+                  <span class="call-detail">88 lines</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">✎</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Edit</span><span class="target">src/index.ts</span></span>
+                    <span class="call-output">+12 −4</span>
+                  </span>
+                  <span class="call-detail">+12 −4</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">❯</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Bash</span><span class="target">bun test</span></span>
+                    <span class="call-output">42 passed</span>
+                  </span>
+                  <span class="call-detail">42 passed</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">⌕</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Grep</span><span class="target">TODO</span></span>
+                    <span class="call-output">0 matches</span>
+                  </span>
+                  <span class="call-detail">0 matches</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">✎</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Edit</span><span class="target">README.md</span></span>
+                    <span class="call-output">+3 −1</span>
+                  </span>
+                  <span class="call-detail">+3 −1</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="group-summary" aria-hidden="true">
+              <span class="glyph">•</span>
+              <span><strong>8 tools</strong> <span class="dim">Bash ×2 · Read ×2 · Grep ×2 · Edit ×2</span></span>
+            </div>
+
+            <div class="terminal-prompt" aria-hidden="true"><span>❯</span><span class="cursor"></span></div>
+          </div>
+
+          <div class="terminal-foot">
+            <span class="key">Ctrl</span><span class="key">O</span>
+            <span>展开任意模式</span>
+          </div>
+        </div>
+
+        <p class="demo-note">同样的八次调用，三种看法。</p>
+        <p class="sr-only" id="demo-desc">同样的八次工具调用，三种显示方式：默认方框、每次一行，或合并成一条摘要。用上面的按钮切换。</p>
+      </div>
+    </section>
+
+    <section class="section modes" id="modes">
+      <div class="section-head">
+        <h2>同样的工作，三种读法。</h2>
+        <p>用 <code>/compact-tools</code> 切换模式。插件默认使用 <code>line</code>。</p>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">default</div>
+        <p>每次调用保留自己的方框。</p>
+        <div class="specimen specimen-default" aria-label="默认模式示例">
+          <div class="mini-call"><span class="mini-title">❯ Bash <span class="dim">ls -la</span></span><span class="mini-body">src  package.json  README.md</span></div>
+          <div class="mini-call"><span class="mini-title">● Read <span class="dim">src/index.ts</span></span><span class="mini-body">124 lines</span></div>
+          <div class="mini-call"><span class="mini-title">⌕ Grep <span class="dim">registerTool</span></span><span class="mini-body">3 matches · 2 files</span></div>
+        </div>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">line</div>
+        <p>一行一个调用：工具、目标、结果。</p>
+        <div class="specimen" aria-label="逐行模式示例">
+          <div class="mini-line"><span class="glyph">❯</span><span class="tool">Bash</span><span class="target">ls -la</span><span class="detail">8 entries</span></div>
+          <div class="mini-line"><span class="glyph">●</span><span class="tool">Read</span><span class="target">src/index.ts</span><span class="detail">124 lines</span></div>
+          <div class="mini-line"><span class="glyph">⌕</span><span class="tool">Grep</span><span class="target">registerTool</span><span class="detail">3 matches</span></div>
+        </div>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">group</div>
+        <p>连续多次调用合并成一条摘要。</p>
+        <div class="specimen" aria-label="合并模式示例">
+          <div class="mini-line group"><span class="glyph">•</span><span><strong>3 tools</strong> <span class="dim">Bash · Read · Grep</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section install" id="install">
+      <div class="section-head">
+        <h2>一条命令。</h2>
+        <p>需要 omp 18.13 或更新版本。</p>
+      </div>
+
+      <div class="install-command" data-command="omp plugin install github:OneLastHuman/omp-compact-tools">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code>omp plugin install github:OneLastHuman/omp-compact-tools</code>
+        <button class="copy" type="button" data-copy>复制</button>
+      </div>
+
+      <ol class="steps">
+        <li><span>用上面的命令安装插件。</span></li>
+        <li><span>重启 omp。</span></li>
+        <li><span>运行 <code>/compact-tools</code> 切换模式，或用 <code>/compact-tools group</code> 直接进入合并模式。</span></li>
+      </ol>
+
+      <p class="fine">阅读 <a href="https://github.com/OneLastHuman/omp-compact-tools/blob/main/README.zh-CN.md">README</a>，或切换到 <a href="../" hreflang="en" lang="en">English</a>。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>MIT 许可。为 omp 18.13+ 构建。</span>
+    <nav aria-label="页脚">
+      <a href="https://github.com/OneLastHuman/omp-compact-tools">GitHub</a>
+      <a href="../" hreflang="en" lang="en">English</a>
+    </nav>
+  </footer>
+
+  <p class="sr-only" role="status" data-mode-status></p>
+  <p class="sr-only" role="status" data-copy-status></p>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -16,6 +16,43 @@
   --max: 1180px;
 }
 
+html[lang="zh-CN"] {
+  --serif: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --sans: "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+html[lang="zh-CN"] body {
+  line-height: 1.7;
+}
+
+html[lang="zh-CN"] .hero h1 {
+  font-size: clamp(3.1rem, 7.2vw, 6.2rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+html[lang="zh-CN"] .section-head h2 {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+html[lang="zh-CN"] .skip-link,
+html[lang="zh-CN"] .site-nav,
+html[lang="zh-CN"] .site-footer,
+html[lang="zh-CN"] .copy {
+  font-family: var(--sans);
+}
+
+html[lang="zh-CN"] .lede,
+html[lang="zh-CN"] .note,
+html[lang="zh-CN"] .section-head p,
+html[lang="zh-CN"] .mode-row p,
+html[lang="zh-CN"] .steps li,
+html[lang="zh-CN"] .fine {
+  line-height: 1.75;
+}
+
 * {
   box-sizing: border-box;
 }

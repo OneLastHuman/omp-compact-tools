@@ -4,7 +4,7 @@
 
 把 omp 里一大堆工具调用方框压成一行，连续调用还能合并成一条。只改显示，不改工具本身，也不影响模型看到的内容。
 
-看[宣传页](https://onelasthuman.github.io/omp-compact-tools/)。
+看[中文宣传页](https://onelasthuman.github.io/omp-compact-tools/zh/)。
 
 ## 三种显示方式
 
