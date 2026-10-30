@@ -1,0 +1,30 @@
+{
+  "name": "omp-compact-tools",
+  "version": "1.0.0",
+  "description": "Fold omp tool calls into one line, or group consecutive calls into one summary row.",
+  "main": "extensions/omp-compact-tools.ts",
+  "keywords": [
+    "omp-plugin",
+    "pi-package",
+    "tool-calls",
+    "compact",
+    "tui"
+  ],
+  "author": "OneLastHuman",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneLastHuman/omp-compact-tools.git"
+  },
+  "files": [
+    "extensions",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "omp": {
+    "extensions": [
+      "./extensions/omp-compact-tools.ts"
+    ]
+  }
+}
