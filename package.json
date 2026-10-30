@@ -16,6 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/OneLastHuman/omp-compact-tools.git"
   },
+  "homepage": "https://onelasthuman.github.io/omp-compact-tools/",
   "files": [
     "extensions",
     "README.md",

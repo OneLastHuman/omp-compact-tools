@@ -2,6 +2,8 @@
 
 Fold omp tool calls into a single line, or group consecutive calls into one summary row. Display only — tool calls, results, and what the model sees are unchanged.
 
+See the [landing page](https://onelasthuman.github.io/omp-compact-tools/).
+
 English | [中文](README.zh-CN.md)
 
 ## Three modes
