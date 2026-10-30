@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>omp-compact-tools — Eight calls. One line.</title>
+  <meta name="description" content="A display plugin for omp that folds tool calls into one line, or groups a run into one summary.">
+  <meta property="og:title" content="omp-compact-tools — Eight calls. One line.">
+  <meta property="og:description" content="A display plugin for omp that folds tool calls into one line, or groups a run into one summary.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://OneLastHuman.github.io/omp-compact-tools/">
+  <link rel="canonical" href="https://OneLastHuman.github.io/omp-compact-tools/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="omp-compact-tools home">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3.5 3.5h12l5 5v12h-17z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M15.5 3.5v5h5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M7.5 12.5h8M7.5 16h5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span>omp-compact-tools</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#modes">modes</a>
+      <a href="#install">install</a>
+      <a href="https://github.com/OneLastHuman/omp-compact-tools">GitHub</a>
+      <a href="https://github.com/OneLastHuman/omp-compact-tools/blob/main/README.zh-CN.md" lang="zh-CN">中文</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <h1>Eight calls.<span>One line.</span></h1>
+        <div class="fold-rule" aria-hidden="true"></div>
+        <p class="lede">A display plugin for omp. Fold each call into a row, or group a run into one summary.</p>
+        <p class="note">Display only. Tool calls, results, and model context stay the same.</p>
+        <div class="command" data-command="omp plugin install github:OneLastHuman/omp-compact-tools">
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>omp plugin install github:OneLastHuman/omp-compact-tools</code>
+          <button class="copy" type="button" data-copy>Copy</button>
+        </div>
+      </div>
+
+      <div class="hero-demo">
+        <div class="demo-top">
+          <div class="mode-switch" role="group" aria-label="Transcript mode">
+            <button type="button" data-mode="default" aria-pressed="true" aria-controls="demo">default</button>
+            <button type="button" data-mode="line" aria-pressed="false" aria-controls="demo">line</button>
+            <button type="button" data-mode="group" aria-pressed="false" aria-controls="demo">group</button>
+          </div>
+        </div>
+
+        <div class="terminal" id="demo" data-view="default" aria-describedby="demo-desc">
+          <div class="terminal-bar">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="terminal-path">omp ~/project</span>
+            <span class="terminal-mode" data-mode-label>default</span>
+          </div>
+
+          <div class="terminal-body">
+            <div class="calls">
+              <div class="calls-inner">
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">❯</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Bash</span><span class="target">ls -la</span></span>
+                    <span class="call-output">src  package.json  README.md</span>
+                  </span>
+                  <span class="call-detail">8 entries</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">●</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Read</span><span class="target">src/index.ts</span></span>
+                    <span class="call-output">export function registerTool</span>
+                  </span>
+                  <span class="call-detail">124 lines</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">⌕</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Grep</span><span class="target">registerTool</span></span>
+                    <span class="call-output">3 matches · 2 files</span>
+                  </span>
+                  <span class="call-detail">3 matches</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">●</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Read</span><span class="target">src/plugin.ts</span></span>
+                    <span class="call-output">export const plugin =</span>
+                  </span>
+                  <span class="call-detail">88 lines</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">✎</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Edit</span><span class="target">src/index.ts</span></span>
+                    <span class="call-output">+12 −4</span>
+                  </span>
+                  <span class="call-detail">+12 −4</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">❯</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Bash</span><span class="target">bun test</span></span>
+                    <span class="call-output">42 passed</span>
+                  </span>
+                  <span class="call-detail">42 passed</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">⌕</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Grep</span><span class="target">TODO</span></span>
+                    <span class="call-output">0 matches</span>
+                  </span>
+                  <span class="call-detail">0 matches</span>
+                </article>
+                <article class="call">
+                  <span class="glyph" aria-hidden="true">✎</span>
+                  <span class="call-main">
+                    <span class="call-title"><span class="tool">Edit</span><span class="target">README.md</span></span>
+                    <span class="call-output">+3 −1</span>
+                  </span>
+                  <span class="call-detail">+3 −1</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="group-summary" aria-hidden="true">
+              <span class="glyph">•</span>
+              <span><strong>8 tools</strong> <span class="dim">Bash ×2 · Read ×2 · Grep ×2 · Edit ×2</span></span>
+            </div>
+
+            <div class="terminal-prompt" aria-hidden="true"><span>❯</span><span class="cursor"></span></div>
+          </div>
+
+          <div class="terminal-foot">
+            <span class="key">Ctrl</span><span class="key">O</span>
+            <span>expands any mode</span>
+          </div>
+        </div>
+
+        <p class="demo-note">The same eight calls, three ways.</p>
+        <p class="sr-only" id="demo-desc">The same eight tool calls shown in three modes: default boxes, one line per call, or one grouped summary. Use the mode buttons to switch.</p>
+      </div>
+    </section>
+
+    <section class="section modes" id="modes">
+      <div class="section-head">
+        <h2>Three ways to read the same work.</h2>
+        <p>Switch modes with <code>/compact-tools</code>. The plugin starts in <code>line</code>.</p>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">default</div>
+        <p>Every call keeps its own frame.</p>
+        <div class="specimen specimen-default" aria-label="Default mode example">
+          <div class="mini-call"><span class="mini-title">❯ Bash <span class="dim">ls -la</span></span><span class="mini-body">src  package.json  README.md</span></div>
+          <div class="mini-call"><span class="mini-title">● Read <span class="dim">src/index.ts</span></span><span class="mini-body">124 lines</span></div>
+          <div class="mini-call"><span class="mini-title">⌕ Grep <span class="dim">registerTool</span></span><span class="mini-body">3 matches · 2 files</span></div>
+        </div>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">line</div>
+        <p>One row per call: tool, target, result, time.</p>
+        <div class="specimen" aria-label="Line mode example">
+          <div class="mini-line"><span class="glyph">❯</span><span class="tool">Bash</span><span class="target">ls -la</span><span class="detail">8 entries</span></div>
+          <div class="mini-line"><span class="glyph">●</span><span class="tool">Read</span><span class="target">src/index.ts</span><span class="detail">124 lines</span></div>
+          <div class="mini-line"><span class="glyph">⌕</span><span class="tool">Grep</span><span class="target">registerTool</span><span class="detail">3 matches</span></div>
+        </div>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-name">group</div>
+        <p>A run of consecutive calls becomes one summary.</p>
+        <div class="specimen" aria-label="Group mode example">
+          <div class="mini-line group"><span class="glyph">•</span><span><strong>3 tools</strong> <span class="dim">Bash · Read · Grep</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section install" id="install">
+      <div class="section-head">
+        <h2>One command.</h2>
+        <p>Requires omp 18.13 or newer.</p>
+      </div>
+
+      <div class="install-command" data-command="omp plugin install github:OneLastHuman/omp-compact-tools">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code>omp plugin install github:OneLastHuman/omp-compact-tools</code>
+        <button class="copy" type="button" data-copy>Copy</button>
+      </div>
+
+      <ol class="steps">
+        <li><span>Install the plugin with the command above.</span></li>
+        <li><span>Restart omp.</span></li>
+        <li><span>Run <code>/compact-tools</code> to switch modes, or <code>/compact-tools group</code> to start grouped.</span></li>
+      </ol>
+
+      <p class="fine">Read the <a href="https://github.com/OneLastHuman/omp-compact-tools">README</a> or the <a href="https://github.com/OneLastHuman/omp-compact-tools/blob/main/README.zh-CN.md" lang="zh-CN">中文说明</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>MIT licensed. Built for omp 18.13+.</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/OneLastHuman/omp-compact-tools">GitHub</a>
+      <a href="https://github.com/OneLastHuman/omp-compact-tools/blob/main/README.zh-CN.md" lang="zh-CN">中文</a>
+    </nav>
+  </footer>
+
+  <p class="sr-only" role="status" data-mode-status></p>
+  <p class="sr-only" role="status" data-copy-status></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
